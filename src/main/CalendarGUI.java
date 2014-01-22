@@ -108,6 +108,8 @@ public class CalendarGUI extends javax.swing.JFrame {
         editEventWindow.setMinimumSize(new java.awt.Dimension(300, 400));
         editEventWindow.setPreferredSize(new java.awt.Dimension(300, 400));
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(241, 174));
+
         addEventButton.setText("Add Event");
         addEventButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +200,9 @@ public class CalendarGUI extends javax.swing.JFrame {
         editEventWindow.getContentPane().setLayout(editEventWindowLayout);
         editEventWindowLayout.setHorizontalGroup(
             editEventWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(editEventWindowLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         editEventWindowLayout.setVerticalGroup(
             editEventWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

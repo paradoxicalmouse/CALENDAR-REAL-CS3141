@@ -74,7 +74,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         saturdayNote = new javax.swing.JLabel();
 
         helpWindow.setMinimumSize(new java.awt.Dimension(814, 603));
-        helpWindow.setPreferredSize(new java.awt.Dimension(814, 603));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/help.png"))); // NOI18N
 
@@ -120,7 +119,12 @@ public class CalendarGUI extends javax.swing.JFrame {
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Event Name Here");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Event Name");
 
@@ -213,10 +217,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 
         nextWeekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/arrow.png"))); // NOI18N
         nextWeekButton.setToolTipText("Go to Next Week");
-        nextWeekButton.setMaximumSize(new java.awt.Dimension(74, 74));
-        nextWeekButton.setMinimumSize(new java.awt.Dimension(74, 74));
         nextWeekButton.setName("nextWeekButton"); // NOI18N
-        nextWeekButton.setPreferredSize(new java.awt.Dimension(74, 74));
         nextWeekButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nextWeekButtonMouseClicked(evt);
@@ -265,7 +266,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(helpButton)
                         .addGap(251, 251, 251)))
-                .addComponent(nextWeekButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nextWeekButton)
                 .addContainerGap())
         );
         topPanelLayout.setVerticalGroup(
@@ -277,7 +278,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                         .addComponent(previousWeekButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addGroup(topPanelLayout.createSequentialGroup()
-                        .addComponent(nextWeekButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nextWeekButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,9 +337,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayPanel.setPreferredSize(new java.awt.Dimension(110, 446));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Mon.png"))); // NOI18N
-        jLabel5.setMaximumSize(new java.awt.Dimension(20, 70));
-        jLabel5.setMinimumSize(new java.awt.Dimension(20, 70));
-        jLabel5.setPreferredSize(new java.awt.Dimension(20, 70));
 
         mondayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         mondayNote.setForeground(new java.awt.Color(153, 0, 153));
@@ -356,7 +354,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(mondayNote)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5)
                 .addContainerGap())
         );
         mondayPanelLayout.setVerticalGroup(
@@ -365,7 +363,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(mondayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mondayNote)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -625,6 +623,10 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void newEventButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newEventButtonMouseClicked
         editEventWindow.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_newEventButtonMouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

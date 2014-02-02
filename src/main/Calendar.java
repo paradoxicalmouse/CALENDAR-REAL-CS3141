@@ -25,21 +25,40 @@ public class Calendar {
                 allWeeks[currentWeek].thisWeek[d].events[e].getEventNum();
                 allWeeks[currentWeek].thisWeek[d].events[e].getDayNum();
                 allWeeks[currentWeek].thisWeek[d].events[e].getWeekNum();
+                
+                //if in the calendar each event could also contain the *num ints
+                //it would make the removal very easy.  
             }
         }
     }
     
     /* adds a new event with the given information 
-      dayNum should be 1-7, corrosponding to sun-sat 
+      dayNum should be 0-6, corrosponding to sun-sat 
     */
     public void addNewEvent(int dayNum, String desc, String time, String date, String loc){
         allWeeks[currentWeek] = new Week();
         allWeeks[currentWeek].addEvents(currentWeek, dayNum, desc, time, date, loc);
     }
     
+    public void nextWeek(){
+        if(currentWeek != 52){
+            currentWeek++;
+            getWeekEvents();
+        }
+    }
+    
+    public void previousWeek(){
+        if(currentWeek != 0){
+            currentWeek --;
+            getWeekEvents();
+        }
+    }
+    
     /* removes an event from the calendar, will use the week, day, and eventnum
        values to find the event */
-    public void removeEvent(){
+    public void removeEvent(int dayNum, int weekNum, int eventNum){
+        allWeeks[weekNum].thisWeek[dayNum].removeEvent(weekNum, dayNum, eventNum);
+        getWeekEvents(); //called to re-load the week's calendar with the previous event removed
         
     }
     

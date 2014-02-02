@@ -33,8 +33,16 @@ public class Day {
     }
     
     /* removes event on a specific day */
-    public void removeEvent(){
-        
+    public void removeEvent(int weekNum, int dayNum, int eventNum){
+        if(events[eventNum].getDayNum() == dayNum){
+            if(events[eventNum].getWeekNum() == weekNum){
+                for(int i = eventNum; i < count; i++){
+                    events[i] = events[i+1];
+                }
+            }
+        }
+        count --;
     }
-    
 }
+    
+

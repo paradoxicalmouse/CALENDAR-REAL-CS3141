@@ -16,9 +16,4 @@ public class Week {
     public void addEvents(int dayNum, int weekNum, String desc, String time, String date, String loc){
         thisWeek[dayNum].addEvent(weekNum,dayNum,desc,date,time,loc);
     }
-        
-    /* removes an event from the week's events */
-    public void removeWeekEvent(){
-        
-    }
 }

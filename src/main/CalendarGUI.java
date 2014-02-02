@@ -405,6 +405,11 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel1.setText("Week of " + displayMonth + " " + sunday);
 
         previousWeekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/arrow2.png"))); // NOI18N
+        previousWeekButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                previousWeekButtonMouseClicked(evt);
+            }
+        });
 
         newEventButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/newEventIcon.png"))); // NOI18N
         newEventButton.setText("jLabel10");
@@ -779,7 +784,76 @@ public class CalendarGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextWeekButtonMouseClicked
-        // TODO add your handling code here:
+       
+       date.setMonth(month);
+       date.setYear(year);
+       date.setDate(sunday+7);
+       if ( date.getDate() < sunday ) month += 1; 
+       if ( month > 11 ) { month = 0; year += 1; }
+       sunday = date.getDate();
+       date.setDate(sunday+1);
+       monday = date.getDate();
+       date.setDate(sunday+2);
+       tuesday = date.getDate();
+       date.setDate(sunday+3);
+       wednesday = date.getDate();
+       date.setDate(sunday+4);
+       thursday = date.getDate();
+       date.setDate(sunday+5);
+       friday = date.getDate();
+       date.setDate(sunday+6);
+       saturday = date.getDate();
+       switch (month) {
+            case 0: 
+                displayMonth = "January";
+                break;
+            case 1:
+                displayMonth = "February";
+                break;
+            case 2:
+                displayMonth = "March";
+                break;
+            case 3:
+                displayMonth = "April";
+                break;
+            case 4:
+                displayMonth = "May";
+                break;
+            case 5:
+                displayMonth = "June";
+                break;
+            case 6:
+                displayMonth = "July";
+                break;
+            case 7:
+                displayMonth = "August";
+                break;
+            case 8:
+                displayMonth = "September";
+                break;
+            case 9:
+                displayMonth = "October";
+                break;
+            case 10:
+                displayMonth = "November";
+                break;
+            case 11:
+                displayMonth = "December";
+                break;
+            default:
+                displayMonth = "Broken";
+                break;
+        }
+       
+       jLabel1.setText("Week of " + displayMonth + " " + sunday);
+       sundayNote.setText(""+sunday);
+       mondayNote.setText(""+monday);
+       tuesdayNote.setText(""+tuesday);
+       wednesdayLabel.setText(""+wednesday);
+       thursdayNote.setText(""+thursday);
+       fridayNote.setText(""+friday);
+       saturdayNote.setText(""+saturday);
+       
     }//GEN-LAST:event_nextWeekButtonMouseClicked
 
     private void helpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpButtonMouseClicked
@@ -802,6 +876,77 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void previousWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousWeekButtonMouseClicked
+        date.setMonth(month);
+       date.setYear(year);
+       date.setDate(sunday - 7);
+       if ( date.getDate() > sunday ) month -= 1; 
+       if ( month < 0 ) { month = 11; year -= 1; }
+       sunday = date.getDate();
+       date.setDate(sunday+1);
+       monday = date.getDate();
+       date.setDate(sunday+2);
+       tuesday = date.getDate();
+       date.setDate(sunday+3);
+       wednesday = date.getDate();
+       date.setDate(sunday+4);
+       thursday = date.getDate();
+       date.setDate(sunday+5);
+       friday = date.getDate();
+       date.setDate(sunday+6);
+       saturday = date.getDate();
+       switch (month) {
+            case 0: 
+                displayMonth = "January";
+                break;
+            case 1:
+                displayMonth = "February";
+                break;
+            case 2:
+                displayMonth = "March";
+                break;
+            case 3:
+                displayMonth = "April";
+                break;
+            case 4:
+                displayMonth = "May";
+                break;
+            case 5:
+                displayMonth = "June";
+                break;
+            case 6:
+                displayMonth = "July";
+                break;
+            case 7:
+                displayMonth = "August";
+                break;
+            case 8:
+                displayMonth = "September";
+                break;
+            case 9:
+                displayMonth = "October";
+                break;
+            case 10:
+                displayMonth = "November";
+                break;
+            case 11:
+                displayMonth = "December";
+                break;
+            default:
+                displayMonth = "Broken";
+                break;
+        }
+       
+       jLabel1.setText("Week of " + displayMonth + " " + sunday);
+       sundayNote.setText(""+sunday);
+       mondayNote.setText(""+monday);
+       tuesdayNote.setText(""+tuesday);
+       wednesdayLabel.setText(""+wednesday);
+       thursdayNote.setText(""+thursday);
+       fridayNote.setText(""+friday);
+       saturdayNote.setText(""+saturday);
+    }//GEN-LAST:event_previousWeekButtonMouseClicked
 
     /**
      * @param args the command line arguments

@@ -12,6 +12,7 @@ public class Day {
     Event[] events = new Event[20];
     int count = 0;
     
+    
     public void Day(){
         
     }

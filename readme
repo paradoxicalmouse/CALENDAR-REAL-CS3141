@@ -6,7 +6,7 @@ Calendar functions:
 +Add Event
 +Remove Event
 
-To Run on Windows:
+To Run on Windows/Macintosh:
 Go to dist folder and double click the Calendar.jar file. This should bring up your calendar.
 
 To Run on Linux:

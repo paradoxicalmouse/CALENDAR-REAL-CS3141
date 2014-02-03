@@ -28,6 +28,13 @@ public class CalendarGUI extends javax.swing.JFrame {
     int year;
     String displayMonth;
     TreeMap<String, Day> days = new TreeMap<String,Day>();
+    String sundayEvents;
+    String mondayEvents;
+    String tuesdayEvents;
+    String wednesdayEvents;
+    String thursdayEvents;
+    String fridayEvents;
+    String saturdayEvents;
     
     
     /**
@@ -233,6 +240,8 @@ public class CalendarGUI extends javax.swing.JFrame {
         sundayPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         sundayNote = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        sundayEventBox = new javax.swing.JTextArea();
         mondayPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         mondayNote = new javax.swing.JLabel();
@@ -299,11 +308,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         removeEventButton.setText("Remove Event");
 
         eventNameField.setText("Event Name Here");
-        eventNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventNameFieldActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Event Name");
 
@@ -312,11 +316,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel12.setText("Event Time");
 
         eventLocationField.setText("Location");
-        eventLocationField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventLocationFieldActionPerformed(evt);
-            }
-        });
 
         jLabel13.setText("Location");
 
@@ -499,25 +498,36 @@ public class CalendarGUI extends javax.swing.JFrame {
         sundayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         sundayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
 
+        sundayEventBox.setEditable(false);
+        sundayEventBox.setColumns(20);
+        sundayEventBox.setLineWrap(true);
+        sundayEventBox.setRows(5);
+        sundayEventBox.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(sundayEventBox);
+
         javax.swing.GroupLayout sundayPanelLayout = new javax.swing.GroupLayout(sundayPanel);
         sundayPanel.setLayout(sundayPanelLayout);
         sundayPanelLayout.setHorizontalGroup(
             sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sundayPanelLayout.createSequentialGroup()
+            .addGroup(sundayPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sundayNote)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel9)
-                .addContainerGap())
+                .addGroup(sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sundayPanelLayout.createSequentialGroup()
+                        .addComponent(sundayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         sundayPanelLayout.setVerticalGroup(
             sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sundayPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sundayNote)
-                    .addComponent(jLabel9))
-                .addContainerGap())
+                    .addComponent(jLabel9)
+                    .addComponent(sundayNote))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mondayPanel.setBackground(new java.awt.Color(204, 197, 240));
@@ -869,6 +879,8 @@ public class CalendarGUI extends javax.swing.JFrame {
        fridayNote.setText(""+friday);
        saturdayNote.setText(""+saturday);
        
+       eventPrinter();
+       
     }//GEN-LAST:event_nextWeekButtonMouseClicked
 
     private void helpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpButtonMouseClicked
@@ -888,15 +900,38 @@ public class CalendarGUI extends javax.swing.JFrame {
         int lEventDay = eventDateField.getDate().getDate();
         int lEventMonth = eventDateField.getDate().getMonth();
         int lEventYear = eventDateField.getDate().getYear();
+        String lEventName = eventNameField.getText();
+        int lEventHour = ((Date)eventTimeField.getValue()).getHours();
+        int lEventMinutes = ((Date)eventTimeField.getValue()).getMinutes();
+        String lEventTime = lEventHour + ":" + lEventMinutes;
+        String lEventLocation = eventLocationField.getText();
+        
         String lDayKey = "" + lEventDay + "/" + lEventMonth +"/"+ lEventYear;
         if ( days.containsKey(lDayKey) ){
-            
+            days.get(lDayKey).addEvent(lEventName, lEventTime, lEventLocation);
         } else {
-            
+            Day newDay = new Day(lEventDay, lEventMonth, lEventYear,""+lEventDay+"/"+lEventMonth+"/"+lEventYear);
+            newDay.addEvent(lEventName, lEventTime, lEventLocation);
+            days.put(lDayKey, newDay);
         }
-        editEventWindow.dispose();        // TODO add your handling code here:
+        editEventWindow.dispose();
+        eventPrinter();
+        
+        
     }//GEN-LAST:event_addEventButtonActionPerformed
 
+    private void eventPrinter () {
+        sundayEventBox.setText("");
+        date.setDate(sunday);
+        int lSundayDay = date.getDate();
+        int lSundayMonth = date.getMonth();
+        int lSundayYear = date.getYear();
+        
+       String lSundayKey = "" + lSundayDay + "/" + lSundayMonth +"/"+ lSundayYear;
+       if ( days.containsKey(lSundayKey)) {
+           sundayEventBox.setText(days.get(lSundayKey).eventsToString());
+       }
+    }
     /**
      * Opens the edit event window with a new event.
      * @param evt 
@@ -904,10 +939,6 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void newEventButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newEventButtonMouseClicked
         editEventWindow.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_newEventButtonMouseClicked
-
-    private void eventNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eventNameFieldActionPerformed
 
     /**
      * Moves week view to the previous week.
@@ -982,11 +1013,9 @@ public class CalendarGUI extends javax.swing.JFrame {
        thursdayNote.setText(""+thursday);
        fridayNote.setText(""+friday);
        saturdayNote.setText(""+saturday);
+       
+       eventPrinter();
     }//GEN-LAST:event_previousWeekButtonMouseClicked
-
-    private void eventLocationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventLocationFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eventLocationFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1052,6 +1081,7 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mondayNote;
     private javax.swing.JPanel mondayPanel;
     private javax.swing.JLabel newEventButton;
@@ -1059,6 +1089,7 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JLabel previousWeekButton;
     private javax.swing.JButton removeEventButton;
     private javax.swing.JLabel saturdayNote;
+    private javax.swing.JTextArea sundayEventBox;
     private javax.swing.JLabel sundayNote;
     private javax.swing.JPanel sundayPanel;
     private javax.swing.JLabel thursdayNote;

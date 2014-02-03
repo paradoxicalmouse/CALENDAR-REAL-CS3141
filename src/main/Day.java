@@ -10,7 +10,7 @@ import java.util.*;
 public class Day {
     
     Event[] events = new Event[20];
-    TreeMap<String, Event> eventMap = new TreeMap<String, Event>();
+    TreeMap<String, Event> eventMap = new TreeMap<String,Event>();
     int count = 0;
     int gMonth;
     int gDay;
@@ -24,7 +24,7 @@ public class Day {
      * @param aYear
      * @param aDate 
      */
-    public void Day(int aMonth, int aDay, int aYear, String aDate){
+    public Day(int aMonth, int aDay, int aYear, String aDate){
         gMonth = aMonth;
         gDay = aDay;
         gYear = aYear;
@@ -81,6 +81,21 @@ public class Day {
      */
     public void removeEvent(String aEventName){
         eventMap.remove(aEventName);
+    }
+    
+    /**
+     * Called to return a list of all events displayable by the calendar.
+     * @return events
+     */
+    public String eventsToString () {
+        String eventString = "";
+        for(Event e: eventMap.values()){
+            String lName = e.getEventName();
+            String lTime = e.getTime();
+            String lLocation = e.getLocation();
+            eventString += lTime + " - " + lName + " at " + lLocation + "\n\n";
+        }
+        return eventString;
     }
 }
     

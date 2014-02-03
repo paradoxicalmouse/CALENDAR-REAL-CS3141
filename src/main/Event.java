@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class Event {
     String description;
+    String eventName;
     String time;
     String date;
     String location;
@@ -25,20 +26,53 @@ public class Event {
                
     }
     
+    /**
+     * A proper constructor for the event class
+     * @param aEventName
+     * @param aTime
+     * @param aDate
+     * @param aLocation 
+     */
+    public Event ( String aEventName, String aTime, String aDate, String aLocation) {
+        eventName = aEventName;
+        date = aDate;
+        location = aLocation;
+        time = aTime;
+    }
     
-    /* returns event to the day class */
+    
+    /**
+     * Returns the date of the event.
+     * @return date
+     */
     public String getDate(){
         return date;
     }
     
+    /**
+     * Gets the time of the event
+     * @return time
+     */
     public String getTime(){
         return time;
+    }
+    
+    /**
+     * Gets the name of the event.
+     * @return eventName
+     */
+    public String getEventName() {
+        return eventName;
     }
     
     public String getDescription(){
         return description;
     }
     
+    /**
+     * Gets the location of the event
+     * @return location
+     */
     public String getLocation(){
         return location;
     }

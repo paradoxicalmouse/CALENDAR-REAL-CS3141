@@ -11,6 +11,7 @@ import java.util.*;
 /**
  *
  * @author tbmorris
+ * The Main GUI for the calendar
  */
 public class CalendarGUI extends javax.swing.JFrame {
     GregorianCalendar cal = new GregorianCalendar();
@@ -26,10 +27,12 @@ public class CalendarGUI extends javax.swing.JFrame {
     int month;
     int year;
     String displayMonth;
-    TreeMap<Day,String> days = new TreeMap<Day,String>();
+    TreeMap<String, Day> days = new TreeMap<String,Day>();
     
     
     /**
+     * Sets up the days of the week, initializes all buttons and labels
+     * and makes things function properly for the viewer.
      * Creates new form CalendarGUI
      */
     public CalendarGUI() {
@@ -213,13 +216,13 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        eventLocationField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         eventDateField = new com.toedter.calendar.JDateChooser();
-        timeSpinner = new javax.swing.JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm:ss");
-        timeSpinner.setEditor(timeEditor);
-        timeSpinner.setValue(new Date());
+        eventTimeField = new javax.swing.JSpinner(new SpinnerDateModel());
+        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(eventTimeField, "HH:mm:ss");
+        eventTimeField.setEditor(timeEditor);
+        eventTimeField.setValue(new Date());
         topPanel = new javax.swing.JPanel();
         nextWeekButton = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -308,10 +311,10 @@ public class CalendarGUI extends javax.swing.JFrame {
 
         jLabel12.setText("Event Time");
 
-        jTextField2.setText("Location");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        eventLocationField.setText("Location");
+        eventLocationField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                eventLocationFieldActionPerformed(evt);
             }
         });
 
@@ -332,7 +335,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel13)
                         .addGap(31, 31, 31)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(eventLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -344,7 +347,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eventNameField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eventDateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(timeSpinner, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(eventTimeField, javax.swing.GroupLayout.Alignment.LEADING)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,11 +362,11 @@ public class CalendarGUI extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(timeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eventTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eventLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -384,7 +387,7 @@ public class CalendarGUI extends javax.swing.JFrame {
             editEventWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editEventWindowLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -790,6 +793,11 @@ public class CalendarGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /** Makes the week view show the next week in line, changing the names of
+     * the dates and what not.
+     * 
+     * @param evt 
+     */
     private void nextWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextWeekButtonMouseClicked
        
        date.setMonth(month);
@@ -871,12 +879,28 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         helpWindow.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ 
+    /**
+     * Adds the event to the GUI interface.
+     * @param evt 
+     */
     private void addEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEventButtonActionPerformed
-        
+        int lEventDay = eventDateField.getDate().getDate();
+        int lEventMonth = eventDateField.getDate().getMonth();
+        int lEventYear = eventDateField.getDate().getYear();
+        String lDayKey = "" + lEventDay + "/" + lEventMonth +"/"+ lEventYear;
+        if ( days.containsKey(lDayKey) ){
+            
+        } else {
+            
+        }
         editEventWindow.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_addEventButtonActionPerformed
 
+    /**
+     * Opens the edit event window with a new event.
+     * @param evt 
+     */
     private void newEventButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newEventButtonMouseClicked
         editEventWindow.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_newEventButtonMouseClicked
@@ -885,6 +909,10 @@ public class CalendarGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_eventNameFieldActionPerformed
 
+    /**
+     * Moves week view to the previous week.
+     * @param evt 
+     */
     private void previousWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousWeekButtonMouseClicked
         date.setMonth(month);
        date.setYear(year);
@@ -956,9 +984,9 @@ public class CalendarGUI extends javax.swing.JFrame {
        saturdayNote.setText(""+saturday);
     }//GEN-LAST:event_previousWeekButtonMouseClicked
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void eventLocationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventLocationFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_eventLocationFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -999,7 +1027,9 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JButton addEventButton;
     private javax.swing.JDialog editEventWindow;
     private com.toedter.calendar.JDateChooser eventDateField;
+    private javax.swing.JTextField eventLocationField;
     private javax.swing.JTextField eventNameField;
+    private javax.swing.JSpinner eventTimeField;
     private javax.swing.JLabel fridayNote;
     private javax.swing.JLabel helpButton;
     private javax.swing.JDialog helpWindow;
@@ -1022,7 +1052,6 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel mondayNote;
     private javax.swing.JPanel mondayPanel;
     private javax.swing.JLabel newEventButton;
@@ -1033,7 +1062,6 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JLabel sundayNote;
     private javax.swing.JPanel sundayPanel;
     private javax.swing.JLabel thursdayNote;
-    private javax.swing.JSpinner timeSpinner;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel tuesdayNote;
     private javax.swing.JPanel tuesdayPanel;

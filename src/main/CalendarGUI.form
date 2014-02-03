@@ -76,7 +76,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,7 +104,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="163" max="-2" attributes="0"/>
+                              <Component id="eventLocationField" min="-2" pref="163" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -120,7 +120,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="eventNameField" alignment="0" max="32767" attributes="0"/>
                           <Component id="eventDateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="timeSpinner" alignment="0" max="32767" attributes="0"/>
+                          <Component id="eventTimeField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -140,12 +140,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="timeSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eventTimeField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eventLocationField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -195,12 +195,12 @@
                 <Property name="text" type="java.lang.String" value="Event Time"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="eventLocationField">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Location"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventLocationFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
@@ -210,10 +210,10 @@
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="eventDateField">
             </Component>
-            <Component class="javax.swing.JSpinner" name="timeSpinner">
+            <Component class="javax.swing.JSpinner" name="eventTimeField">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(new SpinnerDateModel())"/>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, &quot;HH:mm:ss&quot;);&#xa;timeSpinner.setEditor(timeEditor);&#xa;timeSpinner.setValue(new Date());"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(eventTimeField, &quot;HH:mm:ss&quot;);&#xa;eventTimeField.setEditor(timeEditor);&#xa;eventTimeField.setValue(new Date());"/>
               </AuxValues>
             </Component>
           </SubComponents>

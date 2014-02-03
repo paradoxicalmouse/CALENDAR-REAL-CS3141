@@ -215,8 +215,13 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         helpWindow = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         editEventWindow = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         addEventButton = new javax.swing.JButton();
@@ -275,9 +280,8 @@ public class CalendarGUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         saturdayEventBox = new javax.swing.JTextArea();
 
-        helpWindow.setMinimumSize(new java.awt.Dimension(814, 603));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/help.png"))); // NOI18N
+        helpWindow.setMaximumSize(new java.awt.Dimension(583, 232));
+        helpWindow.setMinimumSize(new java.awt.Dimension(583, 232));
 
         jButton1.setText("Thanks! I get it now!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -286,23 +290,66 @@ public class CalendarGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("To add an Event:");
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/newEventIcon.png"))); // NOI18N
+        jLabel15.setText("- Press this button, select the date of the event and type the event name, and select \"Remove Event\" ");
+
+        jLabel16.setText("To remove an Event:");
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/newEventIcon.png"))); // NOI18N
+        jLabel17.setText("- Press this button and fill in the info and say \"Add Event\" ");
+
+        jLabel18.setText("To change weeks:");
+
+        jLabel19.setText("Press one of the two arrow buttons");
+
         javax.swing.GroupLayout helpWindowLayout = new javax.swing.GroupLayout(helpWindow.getContentPane());
         helpWindow.getContentPane().setLayout(helpWindowLayout);
         helpWindowLayout.setHorizontalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpWindowLayout.createSequentialGroup()
+                .addGap(0, 41, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(23, 23, 23))
             .addGroup(helpWindowLayout.createSequentialGroup()
                 .addGroup(helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(helpWindowLayout.createSequentialGroup()
                         .addGap(329, 329, 329)
-                        .addComponent(jButton1)))
-                .addGap(0, 0, 0))
+                        .addComponent(jButton1))
+                    .addGroup(helpWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14))
+                    .addGroup(helpWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel16))
+                    .addGroup(helpWindowLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel17))
+                    .addGroup(helpWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel18))
+                    .addGroup(helpWindowLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel19)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         helpWindowLayout.setVerticalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpWindowLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(0, 0, 0))
         );
@@ -320,6 +367,11 @@ public class CalendarGUI extends javax.swing.JFrame {
         });
 
         removeEventButton.setText("Remove Event");
+        removeEventButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeEventButtonActionPerformed(evt);
+            }
+        });
 
         eventNameField.setText("Event Name Here");
 
@@ -1178,6 +1230,21 @@ public class CalendarGUI extends javax.swing.JFrame {
        eventPrinter();
     }//GEN-LAST:event_previousWeekButtonMouseClicked
 
+    private void removeEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeEventButtonActionPerformed
+        int lEventDay = eventDateField.getDate().getDate();
+        int lEventMonth = eventDateField.getDate().getMonth();
+        int lEventYear = eventDateField.getDate().getYear() + 1900;
+        String lEventName = eventNameField.getText();
+        
+        
+        String lDayKey = "" + lEventDay + "/" + lEventMonth +"/"+ lEventYear;
+        if ( days.containsKey(lDayKey) ) {
+            days.get(lDayKey).removeEvent(lEventName);
+        } 
+        editEventWindow.dispose();
+        eventPrinter();
+    }//GEN-LAST:event_removeEventButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1230,7 +1297,12 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

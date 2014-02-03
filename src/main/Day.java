@@ -80,7 +80,7 @@ public class Day {
      * @param aEventName 
      */
     public void removeEvent(String aEventName){
-        eventMap.remove(aEventName);
+        if (eventMap.containsKey(aEventName)) eventMap.remove(aEventName);
     }
     
     /**

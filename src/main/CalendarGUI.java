@@ -49,7 +49,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         month = cal.get(GregorianCalendar.MONTH); //Get month
         year = cal.get(GregorianCalendar.YEAR); //Get year
         date.setMonth(month);
-       date.setYear(year);
+        date.setYear(year);
         
         switch ( cal.get(GregorianCalendar.DAY_OF_WEEK)){
             case GregorianCalendar.SUNDAY:
@@ -480,6 +480,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel1.setText("Week of " + displayMonth + " " + sunday);
 
         previousWeekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/arrow2.png"))); // NOI18N
+        previousWeekButton.setToolTipText("Go to Previous Week");
         previousWeekButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 previousWeekButtonMouseClicked(evt);
@@ -487,7 +488,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         });
 
         newEventButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/newEventIcon.png"))); // NOI18N
-        newEventButton.setText("jLabel10");
+        newEventButton.setToolTipText("Add/Edit/Remove Event");
         newEventButton.setMinimumSize(new java.awt.Dimension(20, 20));
         newEventButton.setPreferredSize(new java.awt.Dimension(20, 20));
         newEventButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -498,6 +499,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 
         helpButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         helpButton.setText("?");
+        helpButton.setToolTipText("Help");
         helpButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 helpButtonMouseClicked(evt);
@@ -610,7 +612,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayNote.setText(Integer.toString(monday));
         mondayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         mondayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
-        mondayNote.setToolTipText("2");
+        mondayNote.setToolTipText("");
 
         mondayEventBox.setColumns(20);
         mondayEventBox.setLineWrap(true);
@@ -1152,6 +1154,7 @@ public class CalendarGUI extends javax.swing.JFrame {
      */
     private void newEventButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newEventButtonMouseClicked
         editEventWindow.setVisible(true);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_newEventButtonMouseClicked
 
     /**

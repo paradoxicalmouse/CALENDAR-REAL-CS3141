@@ -1,16 +1,15 @@
-/*
-
- */
 
 package main;
 
 import java.io.*;
 import java.util.Scanner;
-/*
-
+/**
+ * Manages and makes events more usable.
+ * @author Michael Nurse
+ * @author Taylor Morris
  */
 public class Event {
-    private String eventName;
+    private final String eventName;
     private String time;
     private String date;
     private String location;

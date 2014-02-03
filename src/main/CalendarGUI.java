@@ -11,9 +11,10 @@ import javax.swing.*;
 import java.util.*;
 
 /**
- *
- * @author tbmorris
- * The Main GUI for the calendar
+ * The Main GUI for the calendar. Functions to do all main display information,
+ * calls the Day class, which in turn utilizes the Event class.
+ * @author Taylor Morris
+ * @author Michael Nurse
  */
 public class CalendarGUI extends javax.swing.JFrame {
     GregorianCalendar cal = new GregorianCalendar();
@@ -1046,6 +1047,10 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         helpWindow.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    /**
+     * Reads in all of the file I/O files to display across calendar instances.
+     */
     private void readInFiles(){
        
        date.setDate(sunday);        
@@ -1112,7 +1117,7 @@ public class CalendarGUI extends javax.swing.JFrame {
        days.get(lKey).read(lKey);
        eventPrinter();
     }
-    
+ 
 
     /**
      * Adds the event to the GUI interface.
@@ -1126,8 +1131,9 @@ public class CalendarGUI extends javax.swing.JFrame {
         int lEventHour = ((Date)eventTimeField.getValue()).getHours();
         int lEventMinutes = ((Date)eventTimeField.getValue()).getMinutes();
         String ampm = lEventHour < 12 ? "AM" : "PM";
-        if (lEventHour < 12) lEventHour += 1;
-        else lEventHour -= 12;
+        //if (lEventHour < 12) lEventHour += 1;
+        if ( lEventHour > 12 ) lEventHour -= 12;
+        if ( lEventHour == 0 ) lEventHour = 12;
         String lEventTime;
         if (lEventMinutes < 10)  lEventTime = lEventHour + ":0" + lEventMinutes;
         else lEventTime = lEventHour + ":" + lEventMinutes;
@@ -1313,6 +1319,10 @@ public class CalendarGUI extends javax.swing.JFrame {
        eventPrinter();
     }//GEN-LAST:event_previousWeekButtonMouseClicked
 
+    /**
+     * Makes the remove event button work properly
+     * @param evt 
+     */
     private void removeEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeEventButtonActionPerformed
         int lEventDay = eventDateField.getDate().getDate();
         int lEventMonth = eventDateField.getDate().getMonth();

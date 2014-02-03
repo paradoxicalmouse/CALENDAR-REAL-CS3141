@@ -1,0 +1,14 @@
+Readme for Music Calendar
+--------------------------
+
+Calendar functions:
++Help
++Add Event
++Remove Event
+
+To Run on Windows:
+Go to dist folder and double click the Calendar.jar file. This should bring up your calendar.
+
+To Run on Linux:
+From command line, cd into your dist folder. From here, use the java -jar Calendar.jar command.
+

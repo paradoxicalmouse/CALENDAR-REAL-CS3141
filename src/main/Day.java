@@ -5,8 +5,11 @@
 package main;
 import java.util.*;
 import java.io.*;
-/*
-
+/**
+ * Functions to store the events within every any given day in an easy
+ * to access location.
+ * @author Michael Nurse
+ * @author Taylor Morris
  */
 public class Day {
     
@@ -82,7 +85,7 @@ public class Day {
         
         Writer writer = null;
         String[] events = eventMap.keySet().toArray(new String[0]);
-        if ( events.length == 0 ) return;
+        if ( events.length == 0 ) return; //added to fix bug with removing last event
         String date = eventMap.get(events[0]).getDate();
         date = date.replace("/", "");
             try {
@@ -105,6 +108,10 @@ public class Day {
             }
         }
     
+        /**
+         * Called to read events from a file.
+         * @param aDate 
+         */
         public void read(String aDate){
            aDate = aDate.replace("/", "");
            try{

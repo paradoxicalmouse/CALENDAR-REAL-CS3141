@@ -48,6 +48,8 @@ public class CalendarGUI extends javax.swing.JFrame {
         today = cal.get(GregorianCalendar.DAY_OF_MONTH); //Get day
         month = cal.get(GregorianCalendar.MONTH); //Get month
         year = cal.get(GregorianCalendar.YEAR); //Get year
+        date.setMonth(month);
+       date.setYear(year);
         
         switch ( cal.get(GregorianCalendar.DAY_OF_WEEK)){
             case GregorianCalendar.SUNDAY:
@@ -245,21 +247,33 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         mondayNote = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        mondayEventBox = new javax.swing.JTextArea();
         tuesdayPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tuesdayNote = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tuesdayEventBox = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         wednesdayLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        wednesdayEventBox = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         thursdayNote = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        thursdayEventBox = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         fridayNote = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        fridayEventBox = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         saturdayNote = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        saturdayEventBox = new javax.swing.JTextArea();
 
         helpWindow.setMinimumSize(new java.awt.Dimension(814, 603));
 
@@ -512,7 +526,7 @@ public class CalendarGUI extends javax.swing.JFrame {
             .addGroup(sundayPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(sundayPanelLayout.createSequentialGroup()
                         .addComponent(sundayNote)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -525,9 +539,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(sundayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(sundayNote))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         mondayPanel.setBackground(new java.awt.Color(204, 197, 240));
@@ -546,15 +560,25 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
         mondayNote.setToolTipText("2");
 
+        mondayEventBox.setColumns(20);
+        mondayEventBox.setLineWrap(true);
+        mondayEventBox.setRows(5);
+        jScrollPane2.setViewportView(mondayEventBox);
+
         javax.swing.GroupLayout mondayPanelLayout = new javax.swing.GroupLayout(mondayPanel);
         mondayPanel.setLayout(mondayPanelLayout);
         mondayPanelLayout.setHorizontalGroup(
             mondayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mondayPanelLayout.createSequentialGroup()
+            .addGroup(mondayPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mondayNote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addGroup(mondayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mondayPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(mondayPanelLayout.createSequentialGroup()
+                        .addComponent(mondayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)))
                 .addContainerGap())
         );
         mondayPanelLayout.setVerticalGroup(
@@ -564,7 +588,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(mondayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mondayNote)
                     .addComponent(jLabel5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         tuesdayPanel.setBackground(new java.awt.Color(204, 197, 240));
@@ -582,15 +608,28 @@ public class CalendarGUI extends javax.swing.JFrame {
         tuesdayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         tuesdayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
 
+        tuesdayEventBox.setEditable(false);
+        tuesdayEventBox.setColumns(20);
+        tuesdayEventBox.setLineWrap(true);
+        tuesdayEventBox.setRows(5);
+        tuesdayEventBox.setWrapStyleWord(true);
+        tuesdayEventBox.setPreferredSize(new java.awt.Dimension(164, 90));
+        jScrollPane3.setViewportView(tuesdayEventBox);
+
         javax.swing.GroupLayout tuesdayPanelLayout = new javax.swing.GroupLayout(tuesdayPanel);
         tuesdayPanel.setLayout(tuesdayPanelLayout);
         tuesdayPanelLayout.setHorizontalGroup(
             tuesdayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tuesdayPanelLayout.createSequentialGroup()
+            .addGroup(tuesdayPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tuesdayNote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(tuesdayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tuesdayPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(tuesdayPanelLayout.createSequentialGroup()
+                        .addComponent(tuesdayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         tuesdayPanelLayout.setVerticalGroup(
@@ -600,7 +639,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(tuesdayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tuesdayNote)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 197, 240));
@@ -618,15 +659,27 @@ public class CalendarGUI extends javax.swing.JFrame {
         wednesdayLabel.setHorizontalTextPosition(JLabel.CENTER);
         wednesdayLabel.setVerticalTextPosition(JLabel.CENTER);
 
+        wednesdayEventBox.setEditable(false);
+        wednesdayEventBox.setColumns(20);
+        wednesdayEventBox.setLineWrap(true);
+        wednesdayEventBox.setRows(5);
+        wednesdayEventBox.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(wednesdayEventBox);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(wednesdayLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(wednesdayLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -636,7 +689,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(wednesdayLabel)
                     .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(204, 197, 240));
@@ -654,15 +709,27 @@ public class CalendarGUI extends javax.swing.JFrame {
         thursdayNote.setHorizontalTextPosition(JLabel.CENTER);
         thursdayNote.setVerticalTextPosition(JLabel.CENTER);
 
+        thursdayEventBox.setEditable(false);
+        thursdayEventBox.setColumns(20);
+        thursdayEventBox.setLineWrap(true);
+        thursdayEventBox.setRows(5);
+        thursdayEventBox.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(thursdayEventBox);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(thursdayNote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(thursdayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -672,7 +739,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(thursdayNote)
                     .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel6.setBackground(new java.awt.Color(204, 197, 240));
@@ -690,15 +759,27 @@ public class CalendarGUI extends javax.swing.JFrame {
         fridayNote.setHorizontalTextPosition(JLabel.CENTER);
         fridayNote.setVerticalTextPosition(JLabel.CENTER);
 
+        fridayEventBox.setEditable(false);
+        fridayEventBox.setColumns(20);
+        fridayEventBox.setLineWrap(true);
+        fridayEventBox.setRows(5);
+        fridayEventBox.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(fridayEventBox);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fridayNote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(fridayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -708,7 +789,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fridayNote)
                     .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(204, 197, 240));
@@ -726,15 +809,27 @@ public class CalendarGUI extends javax.swing.JFrame {
         saturdayNote.setHorizontalTextPosition(JLabel.CENTER);
         saturdayNote.setVerticalTextPosition(JLabel.CENTER);
 
+        saturdayEventBox.setEditable(false);
+        saturdayEventBox.setColumns(20);
+        saturdayEventBox.setLineWrap(true);
+        saturdayEventBox.setRows(5);
+        saturdayEventBox.setWrapStyleWord(true);
+        jScrollPane7.setViewportView(saturdayEventBox);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(saturdayNote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(saturdayNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -744,7 +839,9 @@ public class CalendarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saturdayNote)
                     .addComponent(jLabel8))
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout weekPanelLayout = new javax.swing.GroupLayout(weekPanel);
@@ -899,7 +996,7 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void addEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEventButtonActionPerformed
         int lEventDay = eventDateField.getDate().getDate();
         int lEventMonth = eventDateField.getDate().getMonth();
-        int lEventYear = eventDateField.getDate().getYear();
+        int lEventYear = eventDateField.getDate().getYear() + 1900;
         String lEventName = eventNameField.getText();
         int lEventHour = ((Date)eventTimeField.getValue()).getHours();
         int lEventMinutes = ((Date)eventTimeField.getValue()).getMinutes();
@@ -920,17 +1017,81 @@ public class CalendarGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_addEventButtonActionPerformed
 
+    /**
+     * Prints out the events for every given date.
+     */
     private void eventPrinter () {
-        sundayEventBox.setText("");
-        date.setDate(sunday);
-        int lSundayDay = date.getDate();
-        int lSundayMonth = date.getMonth();
-        int lSundayYear = date.getYear();
-        
-       String lSundayKey = "" + lSundayDay + "/" + lSundayMonth +"/"+ lSundayYear;
-       if ( days.containsKey(lSundayKey)) {
-           sundayEventBox.setText(days.get(lSundayKey).eventsToString());
+       sundayEventBox.setText("");
+       date.setDate(sunday);        
+       int lDay = date.getDate();
+       int lMonth = date.getMonth();
+       int lYear = date.getYear();           
+       String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           sundayEventBox.setText(days.get(lKey).eventsToString());
        }
+       mondayEventBox.setText("");
+       date.setDate(monday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           mondayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       tuesdayEventBox.setText("");
+       date.setDate(tuesday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           tuesdayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       wednesdayEventBox.setText("");
+       date.setDate(wednesday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           wednesdayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       thursdayEventBox.setText("");
+       date.setDate(thursday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           thursdayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       fridayEventBox.setText("");
+       date.setDate(friday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           fridayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       saturdayEventBox.setText("");
+       date.setDate(saturday);
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       //System.out.println(lKey);
+       if ( days.containsKey(lKey)) {
+           saturdayEventBox.setText(days.get(lKey).eventsToString());
+       }
+       
     }
     /**
      * Opens the edit event window with a new event.
@@ -1059,6 +1220,7 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JTextField eventLocationField;
     private javax.swing.JTextField eventNameField;
     private javax.swing.JSpinner eventTimeField;
+    private javax.swing.JTextArea fridayEventBox;
     private javax.swing.JLabel fridayNote;
     private javax.swing.JLabel helpButton;
     private javax.swing.JDialog helpWindow;
@@ -1082,20 +1244,31 @@ public class CalendarGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextArea mondayEventBox;
     private javax.swing.JLabel mondayNote;
     private javax.swing.JPanel mondayPanel;
     private javax.swing.JLabel newEventButton;
     private javax.swing.JLabel nextWeekButton;
     private javax.swing.JLabel previousWeekButton;
     private javax.swing.JButton removeEventButton;
+    private javax.swing.JTextArea saturdayEventBox;
     private javax.swing.JLabel saturdayNote;
     private javax.swing.JTextArea sundayEventBox;
     private javax.swing.JLabel sundayNote;
     private javax.swing.JPanel sundayPanel;
+    private javax.swing.JTextArea thursdayEventBox;
     private javax.swing.JLabel thursdayNote;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JTextArea tuesdayEventBox;
     private javax.swing.JLabel tuesdayNote;
     private javax.swing.JPanel tuesdayPanel;
+    private javax.swing.JTextArea wednesdayEventBox;
     private javax.swing.JLabel wednesdayLabel;
     private javax.swing.JPanel weekPanel;
     // End of variables declaration//GEN-END:variables

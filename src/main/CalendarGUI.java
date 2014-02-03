@@ -615,6 +615,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayEventBox.setColumns(20);
         mondayEventBox.setLineWrap(true);
         mondayEventBox.setRows(5);
+        mondayEventBox.setWrapStyleWord(true);
         jScrollPane2.setViewportView(mondayEventBox);
 
         javax.swing.GroupLayout mondayPanelLayout = new javax.swing.GroupLayout(mondayPanel);

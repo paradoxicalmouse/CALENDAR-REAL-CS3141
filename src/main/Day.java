@@ -3,13 +3,14 @@
  */
 
 package main;
-
+import java.util.*;
 /*
 
  */
 public class Day {
     
     Event[] events = new Event[20];
+    TreeMap<String, Event> eventMap = new TreeMap<String, Event>();
     int count = 0;
     int gMonth;
     int gDay;
@@ -30,8 +31,20 @@ public class Day {
         gDate = aDate;
     }
     
+    /**
+     * An event class using the minimum amount of information possible.
+     * @param aEventName
+     * @param aTime
+     * @param aLoc 
+     */
     public void addEvent ( String aEventName, String aTime, String aLoc) {
-        
+        if (eventMap.containsKey(aEventName)){
+            eventMap.get(aEventName).setTime(aTime);
+            eventMap.get(aEventName).setLocation(aLoc);
+        } else {
+            Event newEvent = new Event(aEventName, aTime, gDate, aLoc);
+            eventMap.put(aEventName, newEvent);
+        }
     }
     /* adds event for the specific day into the day's array of 
        events 
@@ -60,6 +73,14 @@ public class Day {
             }
         }
         count --;
+    }
+    
+    /**
+     * Removes an event given by the event name
+     * @param aEventName 
+     */
+    public void removeEvent(String aEventName){
+        eventMap.remove(aEventName);
     }
 }
     

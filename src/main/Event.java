@@ -10,14 +10,14 @@ import java.util.Scanner;
 
  */
 public class Event {
-    String description;
-    String eventName;
-    String time;
-    String date;
-    String location;
-    int eventNum; // number of the event in a given day of events
-    int weekNum;
-    int dayNum;
+    private String description;
+    private String eventName;
+    private String time;
+    private String date;
+    private String location;
+    private int eventNum; // number of the event in a given day of events
+    private int weekNum;
+    private int dayNum;
     
     public void Event(String desc, String t, String d){
        description = desc;
@@ -86,5 +86,28 @@ public class Event {
         return dayNum;
     }
     
+    /**
+     * Modifies the set time to a new time.
+     * @param aTime 
+     */
+    public void setTime(String aTime){
+        time = aTime;
+    }
+    
+    /**
+     * Modifies the set date.
+     * @param aDate
+     */
+    public void setDate(String aDate){
+        date = aDate;
+    }
+    
+    /**
+     * Modifies the set location
+     * @param aLoc
+     */
+    public void setLocation(String aLoc){
+        location = aLoc;
+    }
 }
 

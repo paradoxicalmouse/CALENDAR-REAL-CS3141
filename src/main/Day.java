@@ -69,6 +69,7 @@ public class Day {
         for(Event e: eventMap.values()){
             String lName = e.getEventName();
             String lTime = e.getTime();
+            
             String lLocation = e.getLocation();
             eventString += lTime + " - " + lName + " at " + lLocation + "\n\n";
         }
@@ -81,7 +82,7 @@ public class Day {
         
         Writer writer = null;
         String[] events = eventMap.keySet().toArray(new String[0]);
-        
+        if ( events.length == 0 ) return;
         String date = eventMap.get(events[0]).getDate();
         date = date.replace("/", "");
             try {

@@ -1125,7 +1125,13 @@ public class CalendarGUI extends javax.swing.JFrame {
         String lEventName = eventNameField.getText();
         int lEventHour = ((Date)eventTimeField.getValue()).getHours();
         int lEventMinutes = ((Date)eventTimeField.getValue()).getMinutes();
-        String lEventTime = lEventHour + ":" + lEventMinutes;
+        String ampm = lEventHour < 12 ? "AM" : "PM";
+        if (lEventHour < 12) lEventHour += 1;
+        else lEventHour -= 12;
+        String lEventTime;
+        if (lEventMinutes < 10)  lEventTime = lEventHour + ":0" + lEventMinutes;
+        else lEventTime = lEventHour + ":" + lEventMinutes;
+        lEventTime += ampm;
         String lEventLocation = eventLocationField.getText();
         
         String lDayKey = "" + lEventDay + "/" + lEventMonth +"/"+ lEventYear;

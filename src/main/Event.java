@@ -10,22 +10,11 @@ import java.util.Scanner;
 
  */
 public class Event {
-    private String description;
     private String eventName;
     private String time;
     private String date;
     private String location;
-    private int eventNum; // number of the event in a given day of events
-    private int weekNum;
-    private int dayNum;
-    
-    public void Event(String desc, String t, String d){
-       description = desc;
-       time = t;
-       date = d;
-               
-    }
-    
+
     /**
      * A proper constructor for the event class
      * @param aEventName
@@ -65,25 +54,12 @@ public class Event {
         return eventName;
     }
     
-    public String getDescription(){
-        return description;
-    }
-    
     /**
      * Gets the location of the event
      * @return location
      */
     public String getLocation(){
         return location;
-    }
-    public int getEventNum(){
-        return eventNum;
-    }
-    public int getWeekNum(){
-        return weekNum;
-    }
-    public int getDayNum(){
-        return dayNum;
     }
     
     /**

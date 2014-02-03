@@ -5,6 +5,8 @@
  */
 
 package main;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javax.swing.*;
 import java.util.*;
 
@@ -203,6 +205,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 break;
         }
         initComponents();
+        readInFiles();
     }
 
     /**
@@ -1030,7 +1033,7 @@ public class CalendarGUI extends javax.swing.JFrame {
        thursdayNote.setText(""+thursday);
        fridayNote.setText(""+friday);
        saturdayNote.setText(""+saturday);
-       
+       readInFiles();
        eventPrinter();
        
     }//GEN-LAST:event_nextWeekButtonMouseClicked
@@ -1043,7 +1046,74 @@ public class CalendarGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         helpWindow.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
- 
+    private void readInFiles(){
+       
+       date.setDate(sunday);        
+       int lDay = date.getDate();
+       int lMonth = date.getMonth();
+       int lYear = date.getYear();           
+       String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       Day newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(monday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(tuesday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(wednesday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(thursday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(friday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       
+       date.setDate(saturday);        
+       lDay = date.getDate();
+       lMonth = date.getMonth();
+       lYear = date.getYear();           
+       lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
+       days.put(lKey, newDay);
+       days.get(lKey).read(lKey);
+       eventPrinter();
+    }
+    
+
     /**
      * Adds the event to the GUI interface.
      * @param evt 
@@ -1065,6 +1135,7 @@ public class CalendarGUI extends javax.swing.JFrame {
             Day newDay = new Day(lEventDay, lEventMonth, lEventYear,""+lEventDay+"/"+lEventMonth+"/"+lEventYear);
             newDay.addEvent(lEventName, lEventTime, lEventLocation);
             days.put(lDayKey, newDay);
+            
         }
         editEventWindow.dispose();
         eventPrinter();
@@ -1113,6 +1184,7 @@ public class CalendarGUI extends javax.swing.JFrame {
        lYear = date.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
+      
        if ( days.containsKey(lKey)) {
            wednesdayEventBox.setText(days.get(lKey).eventsToString());
        }
@@ -1153,7 +1225,8 @@ public class CalendarGUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void newEventButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newEventButtonMouseClicked
-        editEventWindow.setVisible(true);        // TODO add your handling code here:
+        editEventWindow.setVisible(true); 
+        // TODO add your handling code here:
         
     }//GEN-LAST:event_newEventButtonMouseClicked
 
@@ -1230,7 +1303,7 @@ public class CalendarGUI extends javax.swing.JFrame {
        thursdayNote.setText(""+thursday);
        fridayNote.setText(""+friday);
        saturdayNote.setText(""+saturday);
-       
+       readInFiles();
        eventPrinter();
     }//GEN-LAST:event_previousWeekButtonMouseClicked
 

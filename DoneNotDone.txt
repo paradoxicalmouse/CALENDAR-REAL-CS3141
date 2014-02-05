@@ -1,0 +1,10 @@
+We were able to do the following:
++Add/Remove/Edit Events
++Help
++Self-Generating Calendar
++File I/O
+
+We were unable to do the following:
++Click on a day to add an event on that day
++Click on an event to edit/remove it (must type the event's name and date in to the "Add Event" sheet)
++Optimize file I/O

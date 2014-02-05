@@ -19,14 +19,14 @@ import java.util.*;
 public class CalendarGUI extends javax.swing.JFrame {
     GregorianCalendar cal = new GregorianCalendar();
     Date date = new Date();
-    int sunday;
-    int monday;
-    int tuesday;
-    int wednesday;
-    int thursday;
-    int friday;
-    int saturday;
-    int today;
+    Date sunday = new Date();
+    Date monday = new Date();
+    Date tuesday = new Date();
+    Date wednesday = new Date();
+    Date thursday = new Date();
+    Date friday = new Date();
+    Date saturday = new Date();
+    Date today = new Date();
     int month;
     int year;
     String displayMonth;
@@ -48,117 +48,77 @@ public class CalendarGUI extends javax.swing.JFrame {
     public CalendarGUI() {
         //Get real month/year
          //Create calendar
-        today = cal.get(GregorianCalendar.DAY_OF_MONTH); //Get day
+        today.setDate(cal.get(GregorianCalendar.DAY_OF_MONTH)); //Get day
         month = cal.get(GregorianCalendar.MONTH); //Get month
+        today.setMonth(month);
         year = cal.get(GregorianCalendar.YEAR); //Get year
+        today.setYear(year);
         date.setMonth(month);
         date.setYear(year);
         
         switch ( cal.get(GregorianCalendar.DAY_OF_WEEK)){
             case GregorianCalendar.SUNDAY:
                 sunday = today;
-                date.setDate(today+1);
-                monday = date.getDate();
-                date.setDate(today+2);
-                tuesday = date.getDate();
-                date.setDate(today+3);
-                wednesday = date.getDate();
-                date.setDate(today+4);
-                thursday = date.getDate();
-                date.setDate(today+5);
-                friday = date.getDate();
-                date.setDate(today+6);
-                saturday = date.getDate();
+                monday.setDate(today.getDate()+1);
+                tuesday.setDate(today.getDate()+2);
+                wednesday.setDate(today.getDate()+3);
+                thursday.setDate(today.getDate()+4);
+                friday.setDate(today.getDate()+5);
+                saturday.setDate(today.getDate()+6);
                 break;
             case GregorianCalendar.MONDAY:
                 monday = today;
-                date.setDate(today+1);
-                tuesday = date.getDate();
-                date.setDate(today+2);
-                wednesday = date.getDate();
-                date.setDate(today+3);
-                thursday = date.getDate();
-                date.setDate(today+4);
-                friday = date.getDate();
-                date.setDate(today+5);
-                saturday = date.getDate();
-                date.setDate(today-1);
-                sunday = date.getDate();
+                sunday.setDate(today.getDate()-1);
+                tuesday.setDate(today.getDate()+1);
+                wednesday.setDate(today.getDate()+2);
+                thursday.setDate(today.getDate()+3);
+                friday.setDate(today.getDate()+4);
+                saturday.setDate(today.getDate()+5);
                 break;
             case GregorianCalendar.TUESDAY:
                 tuesday = today;
-                date.setDate(today+1);
-                wednesday = date.getDate();
-                date.setDate(today+2);
-                thursday = date.getDate();
-                date.setDate(today+3);
-                friday = date.getDate();
-                date.setDate(today+4);
-                saturday = date.getDate();
-                date.setDate(today-2);
-                sunday = date.getDate();
-                date.setDate(today-1);
-                monday = date.getDate();                
+                sunday.setDate(today.getDate()-2);
+                monday.setDate(today.getDate()-1);
+                wednesday.setDate(today.getDate()+1);
+                thursday.setDate(today.getDate()+2);
+                friday.setDate(today.getDate()+3);
+                saturday.setDate(today.getDate()+4);              
                 break;
             case GregorianCalendar.WEDNESDAY:
                 wednesday = today;
-                date.setDate(today+1);
-                thursday = date.getDate();
-                date.setDate(today+2);
-                friday = date.getDate();
-                date.setDate(today+3);
-                saturday = date.getDate();
-                date.setDate(today-3);
-                sunday = date.getDate();
-                date.setDate(today-2);
-                monday = date.getDate();
-                date.setDate(today-1);
-                tuesday = date.getDate();
+                sunday.setDate(today.getDate()-3);
+                monday.setDate(today.getDate()-2);
+                tuesday.setDate(today.getDate()-1);
+                thursday.setDate(today.getDate()+1);
+                friday.setDate(today.getDate()+2);
+                saturday.setDate(today.getDate()+3);
                 break;
             case GregorianCalendar.THURSDAY:
                 thursday = today;
-                date.setDate(today+1);
-                friday = date.getDate();
-                date.setDate(today+2);
-                saturday = date.getDate();
-                date.setDate(today-4);
-                sunday = date.getDate();
-                date.setDate(today-3);
-                monday = date.getDate();
-                date.setDate(today-2);
-                tuesday = date.getDate();
-                date.setDate(today-1);
-                wednesday = date.getDate();
+                sunday.setDate(today.getDate()-4);
+                monday.setDate(today.getDate()-3);
+                tuesday.setDate(today.getDate()-2);
+                wednesday.setDate(today.getDate()-1);
+                friday.setDate(today.getDate()+1);
+                saturday.setDate(today.getDate()+2);
                 break;
             case GregorianCalendar.FRIDAY:
                 friday = today;
-                date.setDate(today+1);
-                saturday = date.getDate();
-                date.setDate(today-5);
-                sunday = date.getDate();
-                date.setDate(today-4);
-                monday = date.getDate();
-                date.setDate(today-3);
-                tuesday = date.getDate();
-                date.setDate(today-2);
-                wednesday = date.getDate();
-                date.setDate(today-1);
-                thursday = date.getDate();
+                sunday.setDate(today.getDate()-5);
+                monday.setDate(today.getDate()-4);
+                tuesday.setDate(today.getDate()-3);
+                wednesday.setDate(today.getDate()-2);
+                thursday.setDate(today.getDate()-1);
+                saturday.setDate(today.getDate()+1);
                 break;
             case GregorianCalendar.SATURDAY:
                 saturday = today;
-                date.setDate(today-6);
-                sunday = date.getDate();
-                date.setDate(today-5);
-                monday = date.getDate();
-                date.setDate(today-4);
-                tuesday = date.getDate();
-                date.setDate(today-3);
-                wednesday = date.getDate();
-                date.setDate(today-2);
-                thursday = date.getDate();
-                date.setDate(today-1);
-                friday = date.getDate();
+                sunday.setDate(today.getDate()-6);
+                monday.setDate(today.getDate()-5);
+                tuesday.setDate(today.getDate()-4);
+                wednesday.setDate(today.getDate()-3);
+                thursday.setDate(today.getDate()-2);
+                friday.setDate(today.getDate()-1);
                 break;
             default:
                 break;                
@@ -284,7 +244,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         saturdayEventBox = new javax.swing.JTextArea();
 
-        helpWindow.setMaximumSize(new java.awt.Dimension(583, 232));
         helpWindow.setMinimumSize(new java.awt.Dimension(583, 232));
 
         jButton1.setText("Thanks! I get it now!");
@@ -359,7 +318,6 @@ public class CalendarGUI extends javax.swing.JFrame {
         );
 
         editEventWindow.setMinimumSize(new java.awt.Dimension(300, 400));
-        editEventWindow.setPreferredSize(new java.awt.Dimension(300, 400));
 
         jPanel2.setMinimumSize(new java.awt.Dimension(241, 174));
 
@@ -481,7 +439,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("AR BERKLEY", 0, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Week of " + displayMonth + " " + sunday);
+        jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate()+ ", " + (sunday.getYear()+1900));
 
         previousWeekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/arrow2.png"))); // NOI18N
         previousWeekButton.setToolTipText("Go to Previous Week");
@@ -493,8 +451,6 @@ public class CalendarGUI extends javax.swing.JFrame {
 
         newEventButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/newEventIcon.png"))); // NOI18N
         newEventButton.setToolTipText("Add/Edit/Remove Event");
-        newEventButton.setMinimumSize(new java.awt.Dimension(20, 20));
-        newEventButton.setPreferredSize(new java.awt.Dimension(20, 20));
         newEventButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 newEventButtonMouseClicked(evt);
@@ -523,7 +479,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
-                        .addComponent(newEventButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newEventButton)
                         .addGap(18, 18, 18)
                         .addComponent(helpButton)
                         .addGap(251, 251, 251)))
@@ -566,7 +522,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         sundayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         sundayNote.setForeground(new java.awt.Color(153, 0, 153));
         sundayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        sundayNote.setText(Integer.toString(sunday));
+        sundayNote.setText(Integer.toString(sunday.getDate()));
         sundayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         sundayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
 
@@ -613,7 +569,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         mondayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         mondayNote.setForeground(new java.awt.Color(153, 0, 153));
         mondayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        mondayNote.setText(Integer.toString(monday));
+        mondayNote.setText(Integer.toString(monday.getDate()));
         mondayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         mondayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
         mondayNote.setToolTipText("");
@@ -663,7 +619,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         tuesdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         tuesdayNote.setForeground(new java.awt.Color(153, 0, 153));
         tuesdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        tuesdayNote.setText(Integer.toString(tuesday));
+        tuesdayNote.setText(Integer.toString(tuesday.getDate()));
         tuesdayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
         tuesdayNote.setVerticalTextPosition(javax.swing.JLabel.CENTER);
 
@@ -714,7 +670,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         wednesdayLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         wednesdayLabel.setForeground(new java.awt.Color(153, 0, 153));
         wednesdayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        wednesdayLabel.setText(Integer.toString(wednesday));
+        wednesdayLabel.setText(Integer.toString(wednesday.getDate()));
         wednesdayLabel.setHorizontalTextPosition(JLabel.CENTER);
         wednesdayLabel.setVerticalTextPosition(JLabel.CENTER);
 
@@ -764,7 +720,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         thursdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         thursdayNote.setForeground(new java.awt.Color(153, 0, 153));
         thursdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        thursdayNote.setText(Integer.toString(thursday));
+        thursdayNote.setText(Integer.toString(thursday.getDate()));
         thursdayNote.setHorizontalTextPosition(JLabel.CENTER);
         thursdayNote.setVerticalTextPosition(JLabel.CENTER);
 
@@ -814,7 +770,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         fridayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         fridayNote.setForeground(new java.awt.Color(153, 0, 153));
         fridayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        fridayNote.setText(Integer.toString(friday));
+        fridayNote.setText(Integer.toString(friday.getDate()));
         fridayNote.setHorizontalTextPosition(JLabel.CENTER);
         fridayNote.setVerticalTextPosition(JLabel.CENTER);
 
@@ -864,7 +820,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         saturdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         saturdayNote.setForeground(new java.awt.Color(153, 0, 153));
         saturdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
-        saturdayNote.setText(Integer.toString(saturday));
+        saturdayNote.setText(Integer.toString(saturday.getDate()));
         saturdayNote.setHorizontalTextPosition(JLabel.CENTER);
         saturdayNote.setVerticalTextPosition(JLabel.CENTER);
 
@@ -966,25 +922,17 @@ public class CalendarGUI extends javax.swing.JFrame {
      */
     private void nextWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextWeekButtonMouseClicked
        
-       date.setMonth(month);
-       date.setYear(year);
-       date.setDate(sunday+7);
-       if ( date.getDate() < sunday ) month += 1; 
-       if ( month > 11 ) { month = 0; year += 1; }
-       sunday = date.getDate();
-       date.setDate(sunday+1);
-       monday = date.getDate();
-       date.setDate(sunday+2);
-       tuesday = date.getDate();
-       date.setDate(sunday+3);
-       wednesday = date.getDate();
-       date.setDate(sunday+4);
-       thursday = date.getDate();
-       date.setDate(sunday+5);
-       friday = date.getDate();
-       date.setDate(sunday+6);
-       saturday = date.getDate();
-       switch (month) {
+       
+       
+       sunday.setDate(sunday.getDate()+7);
+       monday.setDate(monday.getDate()+7);      
+       tuesday.setDate(tuesday.getDate()+7);       
+       wednesday.setDate(wednesday.getDate()+7);       
+       thursday.setDate(thursday.getDate()+7);       
+       friday.setDate(friday.getDate()+7);      
+       saturday.setDate(saturday.getDate()+7);
+       
+       switch (month=sunday.getMonth()) {
             case 0: 
                 displayMonth = "January";
                 break;
@@ -1026,14 +974,14 @@ public class CalendarGUI extends javax.swing.JFrame {
                 break;
         }
        
-       jLabel1.setText("Week of " + displayMonth + " " + sunday);
-       sundayNote.setText(""+sunday);
-       mondayNote.setText(""+monday);
-       tuesdayNote.setText(""+tuesday);
-       wednesdayLabel.setText(""+wednesday);
-       thursdayNote.setText(""+thursday);
-       fridayNote.setText(""+friday);
-       saturdayNote.setText(""+saturday);
+       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() + ", " +(sunday.getYear()+1900));
+       sundayNote.setText(""+sunday.getDate());
+       mondayNote.setText(""+monday.getDate());
+       tuesdayNote.setText(""+tuesday.getDate());
+       wednesdayLabel.setText(""+wednesday.getDate());
+       thursdayNote.setText(""+thursday.getDate());
+       fridayNote.setText(""+friday.getDate());
+       saturdayNote.setText(""+saturday.getDate());
        readInFiles();
        eventPrinter();
        
@@ -1053,64 +1001,65 @@ public class CalendarGUI extends javax.swing.JFrame {
      */
     private void readInFiles(){
        
-       date.setDate(sunday);        
-       int lDay = date.getDate();
-       int lMonth = date.getMonth();
-       int lYear = date.getYear();           
+              
+       int lDay = sunday.getDate();
+       int lMonth = sunday.getMonth();
+       int lYear = sunday.getYear()+1900;           
        String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       
        Day newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(monday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+              
+       lDay = monday.getDate();
+       lMonth = monday.getMonth();
+       lYear = monday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(tuesday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+             
+       lDay = tuesday.getDate();
+       lMonth = tuesday.getMonth();
+       lYear = tuesday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(wednesday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+        
+       lDay = wednesday.getDate();
+       lMonth = wednesday.getMonth();
+       lYear = wednesday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(thursday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+              
+       lDay = thursday.getDate();
+       lMonth = thursday.getMonth();
+       lYear = thursday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(friday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+              
+       lDay = friday.getDate();
+       lMonth = friday.getMonth();
+       lYear = friday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
        days.get(lKey).read(lKey);
        
-       date.setDate(saturday);        
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();           
+               
+       lDay = saturday.getDate();
+       lMonth = saturday.getMonth();
+       lYear = saturday.getYear()+1900;           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1160,40 +1109,40 @@ public class CalendarGUI extends javax.swing.JFrame {
      */
     private void eventPrinter () {
        sundayEventBox.setText("");
-       date.setDate(sunday);        
-       int lDay = date.getDate();
-       int lMonth = date.getMonth();
-       int lYear = date.getYear();           
+       int lDay = sunday.getDate();
+       int lMonth = sunday.getMonth();
+       int lYear = sunday.getYear() +1900;           
        String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
+       
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            sundayEventBox.setText(days.get(lKey).eventsToString());
        }
        mondayEventBox.setText("");
-       date.setDate(monday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+       
+       lDay = monday.getDate();
+       lMonth = monday.getMonth();
+       lYear = monday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            mondayEventBox.setText(days.get(lKey).eventsToString());
        }
        tuesdayEventBox.setText("");
-       date.setDate(tuesday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+       
+       lDay = tuesday.getDate();
+       lMonth = tuesday.getMonth();
+       lYear = tuesday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            tuesdayEventBox.setText(days.get(lKey).eventsToString());
        }
        wednesdayEventBox.setText("");
-       date.setDate(wednesday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+       
+       lDay = wednesday.getDate();
+       lMonth = wednesday.getMonth();
+       lYear = wednesday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
       
@@ -1201,30 +1150,30 @@ public class CalendarGUI extends javax.swing.JFrame {
            wednesdayEventBox.setText(days.get(lKey).eventsToString());
        }
        thursdayEventBox.setText("");
-       date.setDate(thursday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+      
+       lDay = thursday.getDate();
+       lMonth = thursday.getMonth();
+       lYear = thursday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            thursdayEventBox.setText(days.get(lKey).eventsToString());
        }
        fridayEventBox.setText("");
-       date.setDate(friday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+       
+       lDay = friday.getDate();
+       lMonth = friday.getMonth();
+       lYear = friday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            fridayEventBox.setText(days.get(lKey).eventsToString());
        }
        saturdayEventBox.setText("");
-       date.setDate(saturday);
-       lDay = date.getDate();
-       lMonth = date.getMonth();
-       lYear = date.getYear();
+       
+       lDay = saturday.getDate();
+       lMonth = saturday.getMonth();
+       lYear = saturday.getYear();
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
@@ -1247,24 +1196,14 @@ public class CalendarGUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void previousWeekButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previousWeekButtonMouseClicked
-        date.setMonth(month);
-       date.setYear(year);
-       date.setDate(sunday - 7);
-       if ( date.getDate() > sunday ) month -= 1; 
-       if ( month < 0 ) { month = 11; year -= 1; }
-       sunday = date.getDate();
-       date.setDate(sunday+1);
-       monday = date.getDate();
-       date.setDate(sunday+2);
-       tuesday = date.getDate();
-       date.setDate(sunday+3);
-       wednesday = date.getDate();
-       date.setDate(sunday+4);
-       thursday = date.getDate();
-       date.setDate(sunday+5);
-       friday = date.getDate();
-       date.setDate(sunday+6);
-       saturday = date.getDate();
+       sunday.setDate(sunday.getDate()-7);
+       monday.setDate(monday.getDate()-7);      
+       tuesday.setDate(tuesday.getDate()-7);       
+       wednesday.setDate(wednesday.getDate()-7);       
+       thursday.setDate(thursday.getDate()-7);       
+       friday.setDate(friday.getDate()-7);      
+       saturday.setDate(saturday.getDate()-7);
+       month = sunday.getMonth();
        switch (month) {
             case 0: 
                 displayMonth = "January";
@@ -1307,14 +1246,14 @@ public class CalendarGUI extends javax.swing.JFrame {
                 break;
         }
        
-       jLabel1.setText("Week of " + displayMonth + " " + sunday);
-       sundayNote.setText(""+sunday);
-       mondayNote.setText(""+monday);
-       tuesdayNote.setText(""+tuesday);
-       wednesdayLabel.setText(""+wednesday);
-       thursdayNote.setText(""+thursday);
-       fridayNote.setText(""+friday);
-       saturdayNote.setText(""+saturday);
+       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() +", " + (sunday.getYear()+1900));
+       sundayNote.setText(""+sunday.getDate());
+       mondayNote.setText(""+monday.getDate());
+       tuesdayNote.setText(""+tuesday.getDate());
+       wednesdayLabel.setText(""+wednesday.getDate());
+       thursdayNote.setText(""+thursday.getDate());
+       fridayNote.setText(""+friday.getDate());
+       saturdayNote.setText(""+saturday.getDate());
        readInFiles();
        eventPrinter();
     }//GEN-LAST:event_previousWeekButtonMouseClicked

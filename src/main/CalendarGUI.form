@@ -419,7 +419,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;Week of &quot; + displayMonth + &quot; &quot; + sunday.getDate()+ &quot;, &quot; + (sunday.getYear()+1900)" type="code"/>
+              <Connection code="&quot;Week of &quot; + displayMonth + &quot; &quot; + sunday.getDate()+ &quot;, &quot; + (sunday.getYear())" type="code"/>
             </Property>
           </Properties>
         </Component>

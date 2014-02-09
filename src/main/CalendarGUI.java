@@ -48,18 +48,35 @@ public class CalendarGUI extends javax.swing.JFrame {
     public CalendarGUI() {
         //Get real month/year
          //Create calendar
+        // cal.set(GregorianCalendar.DAY_OF_MONTH, 10);
         today.setDate(cal.get(GregorianCalendar.DAY_OF_MONTH)); //Get day
         month = cal.get(GregorianCalendar.MONTH); //Get month
         today.setMonth(month);
         year = cal.get(GregorianCalendar.YEAR); //Get year
         today.setYear(year);
+        //System.out.println(today.getYear());
         date.setMonth(month);
         date.setYear(year);
+        sunday.setMonth(today.getMonth());
+        sunday.setYear(today.getYear());
+        monday.setMonth(today.getMonth());
+        monday.setYear(today.getYear());
+        tuesday.setMonth(today.getMonth());
+        tuesday.setYear(today.getYear());
+        wednesday.setMonth(today.getMonth());
+        wednesday.setYear(today.getYear());
+        thursday.setMonth(today.getMonth());
+        thursday.setYear(today.getYear());
+        friday.setMonth(today.getMonth());
+        friday.setYear(today.getYear());
+        saturday.setMonth(today.getMonth());
+        saturday.setYear(today.getYear());
         
         switch ( cal.get(GregorianCalendar.DAY_OF_WEEK)){
             case GregorianCalendar.SUNDAY:
-                sunday = today;
-                monday.setDate(today.getDate()+1);
+                sunday.setDate(today.getDate());
+                           
+                monday.setDate(today.getDate()+1);                
                 tuesday.setDate(today.getDate()+2);
                 wednesday.setDate(today.getDate()+3);
                 thursday.setDate(today.getDate()+4);
@@ -67,7 +84,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+6);
                 break;
             case GregorianCalendar.MONDAY:
-                monday = today;
+                monday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-1);
                 tuesday.setDate(today.getDate()+1);
                 wednesday.setDate(today.getDate()+2);
@@ -76,7 +93,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+5);
                 break;
             case GregorianCalendar.TUESDAY:
-                tuesday = today;
+                tuesday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-2);
                 monday.setDate(today.getDate()-1);
                 wednesday.setDate(today.getDate()+1);
@@ -85,7 +102,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+4);              
                 break;
             case GregorianCalendar.WEDNESDAY:
-                wednesday = today;
+                wednesday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-3);
                 monday.setDate(today.getDate()-2);
                 tuesday.setDate(today.getDate()-1);
@@ -94,7 +111,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+3);
                 break;
             case GregorianCalendar.THURSDAY:
-                thursday = today;
+                thursday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-4);
                 monday.setDate(today.getDate()-3);
                 tuesday.setDate(today.getDate()-2);
@@ -103,7 +120,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+2);
                 break;
             case GregorianCalendar.FRIDAY:
-                friday = today;
+                friday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-5);
                 monday.setDate(today.getDate()-4);
                 tuesday.setDate(today.getDate()-3);
@@ -112,7 +129,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 saturday.setDate(today.getDate()+1);
                 break;
             case GregorianCalendar.SATURDAY:
-                saturday = today;
+                saturday.setDate(today.getDate());
                 sunday.setDate(today.getDate()-6);
                 monday.setDate(today.getDate()-5);
                 tuesday.setDate(today.getDate()-4);
@@ -439,7 +456,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("AR BERKLEY", 0, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate()+ ", " + (sunday.getYear()+1900));
+        jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate()+ ", " + (sunday.getYear()));
 
         previousWeekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/arrow2.png"))); // NOI18N
         previousWeekButton.setToolTipText("Go to Previous Week");
@@ -974,7 +991,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 break;
         }
        
-       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() + ", " +(sunday.getYear()+1900));
+       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() + ", " +(sunday.getYear()));
        sundayNote.setText(""+sunday.getDate());
        mondayNote.setText(""+monday.getDate());
        tuesdayNote.setText(""+tuesday.getDate());
@@ -1000,21 +1017,18 @@ public class CalendarGUI extends javax.swing.JFrame {
      * Reads in all of the file I/O files to display across calendar instances.
      */
     private void readInFiles(){
-       
-              
        int lDay = sunday.getDate();
        int lMonth = sunday.getMonth();
-       int lYear = sunday.getYear()+1900;           
+       int lYear = sunday.getYear();           
        String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        
        Day newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
-       days.get(lKey).read(lKey);
-       
+       days.get(lKey).read(lKey);       
               
        lDay = monday.getDate();
        lMonth = monday.getMonth();
-       lYear = monday.getYear()+1900;           
+       lYear = monday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1023,7 +1037,7 @@ public class CalendarGUI extends javax.swing.JFrame {
              
        lDay = tuesday.getDate();
        lMonth = tuesday.getMonth();
-       lYear = tuesday.getYear()+1900;           
+       lYear = tuesday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1032,7 +1046,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         
        lDay = wednesday.getDate();
        lMonth = wednesday.getMonth();
-       lYear = wednesday.getYear()+1900;           
+       lYear = wednesday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1041,7 +1055,7 @@ public class CalendarGUI extends javax.swing.JFrame {
               
        lDay = thursday.getDate();
        lMonth = thursday.getMonth();
-       lYear = thursday.getYear()+1900;           
+       lYear = thursday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1050,7 +1064,7 @@ public class CalendarGUI extends javax.swing.JFrame {
               
        lDay = friday.getDate();
        lMonth = friday.getMonth();
-       lYear = friday.getYear()+1900;           
+       lYear = friday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1059,7 +1073,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                
        lDay = saturday.getDate();
        lMonth = saturday.getMonth();
-       lYear = saturday.getYear()+1900;           
+       lYear = saturday.getYear();           
        lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
        newDay = new Day(lDay, lMonth, lYear,""+lDay+"/"+lMonth+"/"+lYear);
        days.put(lKey, newDay);
@@ -1090,6 +1104,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         String lEventLocation = eventLocationField.getText();
         
         String lDayKey = "" + lEventDay + "/" + lEventMonth +"/"+ lEventYear;
+        //System.out.println(lDayKey);
         if ( days.containsKey(lDayKey) ){
             days.get(lDayKey).addEvent(lEventName, lEventTime, lEventLocation);
         } else {
@@ -1111,9 +1126,9 @@ public class CalendarGUI extends javax.swing.JFrame {
        sundayEventBox.setText("");
        int lDay = sunday.getDate();
        int lMonth = sunday.getMonth();
-       int lYear = sunday.getYear() +1900;           
+       int lYear = sunday.getYear();           
        String lKey = "" + lDay + "/" + lMonth +"/"+ lYear;
-       
+       //System.out.println(lKey);
        //System.out.println(lKey);
        if ( days.containsKey(lKey)) {
            sundayEventBox.setText(days.get(lKey).eventsToString());
@@ -1246,7 +1261,7 @@ public class CalendarGUI extends javax.swing.JFrame {
                 break;
         }
        
-       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() +", " + (sunday.getYear()+1900));
+       jLabel1.setText("Week of " + displayMonth + " " + sunday.getDate() +", " + (sunday.getYear()));
        sundayNote.setText(""+sunday.getDate());
        mondayNote.setText(""+monday.getDate());
        tuesdayNote.setText(""+tuesday.getDate());

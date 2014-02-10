@@ -537,7 +537,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Sun.png"))); // NOI18N
 
         sundayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        sundayNote.setForeground(new java.awt.Color(153, 0, 153));
+        sundayNote.setForeground(new java.awt.Color(255, 255, 255));
         sundayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         sundayNote.setText(Integer.toString(sunday.getDate()));
         sundayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
@@ -584,7 +584,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Mon.png"))); // NOI18N
 
         mondayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        mondayNote.setForeground(new java.awt.Color(153, 0, 153));
+        mondayNote.setForeground(new java.awt.Color(255, 255, 255));
         mondayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         mondayNote.setText(Integer.toString(monday.getDate()));
         mondayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
@@ -634,7 +634,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/tues.png"))); // NOI18N
 
         tuesdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        tuesdayNote.setForeground(new java.awt.Color(153, 0, 153));
+        tuesdayNote.setForeground(new java.awt.Color(255, 255, 255));
         tuesdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         tuesdayNote.setText(Integer.toString(tuesday.getDate()));
         tuesdayNote.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
@@ -685,7 +685,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/wed.png"))); // NOI18N
 
         wednesdayLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        wednesdayLabel.setForeground(new java.awt.Color(153, 0, 153));
+        wednesdayLabel.setForeground(new java.awt.Color(255, 255, 255));
         wednesdayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         wednesdayLabel.setText(Integer.toString(wednesday.getDate()));
         wednesdayLabel.setHorizontalTextPosition(JLabel.CENTER);
@@ -719,7 +719,7 @@ public class CalendarGUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(wednesdayLabel)
+                    .addComponent(wednesdayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -735,7 +735,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/thurs.png"))); // NOI18N
 
         thursdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        thursdayNote.setForeground(new java.awt.Color(153, 0, 153));
+        thursdayNote.setForeground(new java.awt.Color(255, 255, 255));
         thursdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         thursdayNote.setText(Integer.toString(thursday.getDate()));
         thursdayNote.setHorizontalTextPosition(JLabel.CENTER);
@@ -785,7 +785,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Fri.png"))); // NOI18N
 
         fridayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        fridayNote.setForeground(new java.awt.Color(153, 0, 153));
+        fridayNote.setForeground(new java.awt.Color(255, 255, 255));
         fridayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         fridayNote.setText(Integer.toString(friday.getDate()));
         fridayNote.setHorizontalTextPosition(JLabel.CENTER);
@@ -835,7 +835,7 @@ public class CalendarGUI extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Sat.png"))); // NOI18N
 
         saturdayNote.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        saturdayNote.setForeground(new java.awt.Color(153, 0, 153));
+        saturdayNote.setForeground(new java.awt.Color(255, 255, 255));
         saturdayNote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/modifiedMusic.png"))); // NOI18N
         saturdayNote.setText(Integer.toString(saturday.getDate()));
         saturdayNote.setHorizontalTextPosition(JLabel.CENTER);
